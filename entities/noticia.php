@@ -5,16 +5,20 @@ class Noticia {
     public $fin;
     public $titulo;
     public $prioridad;
+    public $perfil;
     public $duracion;
+    public $idContenido;
 
     // Constructor
-    public function __construct($id, $comienzo, $fin, $titulo, $prioridad, $duracion) {
+    public function __construct($id, $comienzo, $fin, $titulo, $prioridad, $perfil, $duracion, $idContenido) {
         $this->id = $id;
         $this->comienzo = $comienzo;
         $this->fin = $fin;
         $this->titulo = $titulo;
         $this->prioridad = $prioridad;
+        $this->perfil = $perfil;
         $this->duracion = $duracion;
+        $this->idContenido = $idContenido;
     }
 
     // Getter para obtener el id
@@ -62,6 +66,16 @@ class Noticia {
         $this->prioridad = $prioridad;
     }
 
+    // Getter para obtener el perfil
+    public function getPerfil() {
+        return $this->perfil;
+    }
+
+    // Setter para establecer el perfil
+    public function setPerfil($perfil) {
+        $this->perfil = $perfil;
+    }
+
     // Getter para obtener la duracion
     public function getDuracion() {
         return $this->duracion;
@@ -70,6 +84,16 @@ class Noticia {
     // Setter para establecer la duracion
     public function setDuracion($duracion) {
         $this->duracion = $duracion;
+    }
+
+    // Getter para obtener el idContenido
+    public function getIdContenido() {
+        return $this->idContenido;
+    }
+
+    // Setter para establecer el idContenido
+    public function setIdContenido($idContenido) {
+        $this->idContenido = $idContenido;
     }
 }
 ?>

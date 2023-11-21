@@ -8,14 +8,16 @@ $conexion = $db->getConexion();
 
 
 if (isset($_POST['crear'])) {
-    $id = $_POST['id'];
     $comienzo = $_POST['comienzo'];
     $fin = $_POST['fin'];
     $titulo = $_POST['titulo'];
     $prioridad = $_POST['prioridad'];
+    $perfil = $_POST['perfil'];
     $duracion = $_POST['duracion'];
+    $idContenido = $_POST['idContenido'];
 
-    $noticia=noticiaRepository::crearNoticia($id, $comienzo, $fin, $titulo, $prioridad, $duracion);
+
+    $noticia=noticiaRepository::crearNoticia("",$comienzo, $fin, $titulo, $prioridad, $perfil,$duracion, $idContenido);
 
     noticiaRepository::añadirNoticia($conexion, $noticia);
 }
@@ -37,22 +39,30 @@ if (isset($_POST['crear'])) {
 <form action="" method="post">
 
     <label for="comienzo">Fecha de inicio:</label>
-    <input type="date" name="comienzo" required><br>
+    <input type="datetime-local" name="comienzo" required><br>
 
     <label for="fin">Fecha de fin:</label>
-    <input type="date" name="fin" required><br>
+    <input type="datetime-local" name="fin" required><br>
 
     <label for="titulo">Título:</label>
     <input type="text" name="titulo" required><br>
 
-    <label for="dirigido">Dirigido:</label>
-    <select name="dirigido" required>
-        <option value="alumno">Alumno</option>
-        <option value="profesor">Profesor</option>
+    <label for="prioridad">Prioridad:</label>
+    <input type="number" name="prioridad" required><br>
+
+    <label for="perfil">Dirigido:</label>
+    <select name="perfil" required>
+        <option value="Alumno">Alumno</option>
+        <option value="Profesor">Profesor</option>
+        <option value="Todos">Todos</option>
+
     </select><br>
 
     <label for="duracion">Duracion:</label>
     <input type="number" name="duracion" required><br>
+
+    <label for="idContenido">Id Contenido:</label>
+    <input type="number" name="idContenido" required><br>
 
     <button type='submit' name='crear'>Crear Noticia</button>
 </form>

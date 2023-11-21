@@ -12,7 +12,7 @@
 </head>
 
 <body id='paginaPrincipal'>
-    <?php require_once './interfaz/creaNoticia.php'; ?>
+    <?php require_once './interfaz/listaNoticia.php'; ?>
 </body>
 
 </html>

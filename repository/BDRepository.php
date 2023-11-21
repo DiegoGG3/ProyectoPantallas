@@ -9,7 +9,7 @@
             }
     
             switch ($tabla) {
-                case "noticia":
+                case "noticias":
                     return noticiaRepository::arrayNoticia($objetos);
                     break;
             }

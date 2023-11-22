@@ -12,7 +12,7 @@
 </head>
 
 <body id='paginaPrincipal'>
-    <?php require_once './interfaz/listaNoticia.php'; ?>
+    <?php require_once './principal/enruta.php'; ?>
 </body>
 
 </html>

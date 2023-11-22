@@ -9,7 +9,7 @@ $noticias = BDRepository::selectUniversal($conexion, 'noticias');
 <!DOCTYPE html>
 <html>
 <head>
-    <script src='api/apiEliminarNoticia.js'></script>
+    <script src='js/apiEliminarNoticia.js'></script>
 
     <title>Lista de Noticias</title>
 </head>

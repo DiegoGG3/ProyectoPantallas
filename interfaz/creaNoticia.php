@@ -36,16 +36,15 @@ if (isset($_POST['crear'])) {
 
 <h1>Crear Noticia</h1>
 
-<form action="" method="post">
+<form action="" method="post" id="form">
+    <label for="titulo">Título:</label>
+    <input type="text" name="titulo" required><br>
 
     <label for="comienzo">Fecha de inicio:</label>
     <input type="datetime-local" name="comienzo" required><br>
 
     <label for="fin">Fecha de fin:</label>
     <input type="datetime-local" name="fin" required><br>
-
-    <label for="titulo">Título:</label>
-    <input type="text" name="titulo" required><br>
 
     <label for="prioridad">Prioridad:</label>
     <input type="number" name="prioridad" required><br>
@@ -55,17 +54,26 @@ if (isset($_POST['crear'])) {
         <option value="Alumno">Alumno</option>
         <option value="Profesor">Profesor</option>
         <option value="Todos">Todos</option>
-
     </select><br>
 
     <label for="duracion">Duracion:</label>
     <input type="number" name="duracion" required><br>
 
-    <label for="idContenido">Id Contenido:</label>
-    <input type="number" name="idContenido" required><br>
+    <label for="recurso">Recurso:</label>
+    <select name="recurso" id="recurso" required>
+        <option value="" selected disabled>Seleccione el recurso</option>
 
-    <button type='submit' name='crear'>Crear Noticia</button>
+        <option value="Web">Web</option>
+        <option value="Imagen">Imagen</option>
+        <option value="Video">Video</option>
+    </select><br>
+
+    <div id="recursos">
+    </div>
+        <button type='submit' name='crear' id="crear">Crear Noticia</button>
 </form>
 
 </body>
+<script src="./js/noticias.js"></script>
+
 </html>

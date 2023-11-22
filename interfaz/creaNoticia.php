@@ -36,7 +36,7 @@ if (isset($_POST['crear'])) {
 
 <h1>Crear Noticia</h1>
 
-<form action="" method="post" id="form">
+<form action="" method="POST" id="form">
     <label for="titulo">Título:</label>
     <input type="text" name="titulo" required><br>
 

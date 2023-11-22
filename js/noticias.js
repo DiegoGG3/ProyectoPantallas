@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         switch(formularioInsert) {
             case 'enlace':
                 var fichero=document.getElementById("enlace").value;
-                if (fichero.files.length>0){
+                if (fichero.length>0){
                     var form= new FormData();
                     form.append("fichero",fichero.files[0]);
                     fetch("crearNoticia.php",{
@@ -61,10 +61,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 
                 break;
-            case 'imagen':
-                var fichero=document.getElementById("imagen").value;
-                console.log(fichero);
-                break;
+                case 'imagen':
+                    var ficheroInput = document.getElementById("imagen");
+                    var fichero = ficheroInput.files[0];
+                    if (fichero) {
+                        var form = new FormData();
+                        form.append("fichero", fichero);
+                        fetch("./api/apicrearNoticia.php", {
+                            method: "post",
+                            body: form
+                        }).then(x => x.text()).then(texto => {
+                            alert("Archivo introducido correctamente");
+
+                            location.reload();
+                        });
+                    } else {
+                        alert("Debe seleccionar un archivo");
+                    }
+                    break;
             case 'video':
                 var fichero=document.getElementById("video").value;
                 console.log(fichero);

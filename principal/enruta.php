@@ -5,8 +5,8 @@
 
 <?php
 if (isset($_GET['pantalla'])) {
-    if ($_GET['pantalla'] == "alumno") {
-        require_once 'index.php';
+    if ($_GET['pantalla'] == "vista") {
+        require_once './principal/enrutaPerfil.php';
     }
     if ($_GET['pantalla'] == "creaNoticia") {
         require_once './interfaz/creaNoticia.php';

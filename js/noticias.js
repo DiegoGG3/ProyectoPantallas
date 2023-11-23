@@ -1,6 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const crear=document.getElementById("crear");
+   
+
     document.getElementById('recurso').addEventListener('change', function() {
         var recursoSeleccionado = this.value;
         var formularioInsert = document.getElementById('recursos');
@@ -40,6 +42,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     crear.onclick=function(ev){
+        var arrayInput=document.getElementsByTagName('input');
+        var valueInput=new Array();
+    
+    
+        for(var i=0;i<arrayInput.length;i++){
+            valueInput.push(arrayInput[i].value);
+        }
+        valueInput.pop();
+        valueInput.push(document.getElementById('perfil').value);
+        valueInput.push(document.getElementById('recursos').childNodes[1].id);
+
+        console.log(valueInput);
+    
         ev.preventDefault();
         
         var formularioInsert = document.getElementById('recursos').childNodes[1].id;
@@ -47,41 +62,67 @@ document.addEventListener('DOMContentLoaded', function() {
         switch(formularioInsert) {
             case 'enlace':
                 var fichero=document.getElementById("enlace").value;
-                if (fichero.length>0){
-                    var form= new FormData();
-                    form.append("fichero",fichero.files[0]);
-                    fetch("crearNoticia.php",{
-                        method:"post",
-                        body:form
-                    }).then(x=>x.text()).then(texto=>{alert(texto)});
-                
-                }else{
-                    alert("Debe de introducir un fichero");
-                }
-
-                
-                break;
-                case 'imagen':
-                    var ficheroInput = document.getElementById("imagen");
-                    var fichero = ficheroInput.files[0];
                     if (fichero) {
                         var form = new FormData();
                         form.append("fichero", fichero);
+                        for (var i = 0; i < valueInput.length; i++) {
+                            form.append("valueInput[]", valueInput[i]);
+                        }
                         fetch("./api/apicrearNoticia.php", {
                             method: "post",
                             body: form
                         }).then(x => x.text()).then(texto => {
                             alert("Archivo introducido correctamente");
 
-                            location.reload();
+                            // location.reload();
                         });
                     } else {
                         alert("Debe seleccionar un archivo");
                     }
-                    break;
+
+                
+                break;
+            case 'imagen':
+                var ficheroInput = document.getElementById("imagen");
+                var fichero = ficheroInput.files[0];
+                if (fichero) {
+                    var form = new FormData();
+                    form.append("fichero", fichero);
+                    for (var i = 0; i < valueInput.length; i++) {
+                        form.append("valueInput[]", valueInput[i]);
+                    }
+                    fetch("./api/apicrearNoticia.php", {
+                        method: "post",
+                        body: form
+                    }).then(x => x.text()).then(texto => {
+                        alert("Archivo introducido correctamente");
+
+                        // location.reload();
+                    });
+                } else {
+                    alert("Debe seleccionar un archivo");
+                }
+                break;
             case 'video':
-                var fichero=document.getElementById("video").value;
-                console.log(fichero);
+                var ficheroInput=document.getElementById("video");
+                var fichero = ficheroInput.files[0];
+                if (fichero) {
+                    var form = new FormData();
+                    form.append("fichero", fichero);
+                    for (var i = 0; i < valueInput.length; i++) {
+                        form.append("valueInput[]", valueInput[i]);
+                    }
+                    fetch("./api/apicrearNoticia.php", {
+                        method: "post",
+                        body: form
+                    }).then(x => x.text()).then(texto => {
+                        alert("Archivo introducido correctamente");
+
+                        // location.reload();
+                    });
+                } else {
+                    alert("Debe seleccionar un archivo");
+                }
                 break;
         }
 

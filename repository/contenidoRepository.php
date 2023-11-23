@@ -41,6 +41,24 @@
     
         $preparedConexion->execute();
     }
+
+    public static function devolverId($conexion, $nombre){
+        $contenido = $conexion->query('SELECT idConenido FROM contenido where url='.$nombre.';' ,MYSQLI_USE_RESULT);
+        while ($registro = $contenido->fetch(PDO::FETCH_OBJ)) {
+        }
+
+    }
+    public static function devolverIdContenidoPorUrl($conexion, $url){
+        $sql = "SELECT idContenido FROM contenido WHERE url = :url";
+        $statement = $conexion->prepare($sql);
+        $statement->bindParam(":url", $url);
+        $statement->execute();
+    
+        $idContenido = $statement->fetch(PDO::FETCH_COLUMN);
+    
+        return $idContenido;
+    }
+    
  
 }
 ?>

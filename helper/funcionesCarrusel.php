@@ -1,26 +1,32 @@
 <?php
     class funcionesCarrusel{
-        public static function cargaCarrusel($rol){
-            $db = new DB();
-            $db->abreConexion();
-            $conexion = $db->getConexion();  
+        public static function cargarCarrusel($rol){
+            $conexion = DB::abreConexion(); 
 
-            $matriz=DBRepository::selectUniversal($conexion, 'noticias')
+            $matriz=BDRepository::selectUniversal($conexion, 'noticias');
+            foreach($matriz as $noticia){
+                if(strtoupper($rol)==strtoupper($noticia->getPerfil()) || strtoupper($noticia->getPerfil())=="TODOS"){
+                    for($i=0;$i<$noticia->getPrioridad()-1;$i++){
+                        array_push($matriz,$noticia);
+                    }
+                }else{
+                    unset($matriz[array_search($noticia, $matriz)]);
+                }
+            }
+
+            $matriz =array_values($matriz);
+            shuffle($matriz);
+            Sesion::escribir('carrusel',$matriz);
         }
 
         public static function devolverContenido(){
-            $db = new DB();
-            $db->abreConexion();
-            $conexion = $db->getConexion();    
+            $conexion = DB::abreConexion();
+    
             
-            $contenido=contenidoRepository::devolverUrlContenidoPorId($conexion,$_SESSION['carrusel'][0]->getIdContenido());
+            $contenido=contenidoRepository::devolverContenidoPorId($conexion,$_SESSION['carrusel'][0]->getIdContenido());
             unset($_SESSION['carrusel'][0]);
             $_SESSION['carrusel']= array_values ($_SESSION['carrusel']);
             return $contenido;
         }
-
-
-    }
-
-    
+    }    
 ?>

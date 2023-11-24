@@ -55,47 +55,5 @@
             $preparedConexion->execute();
         }
         
-
-        // public static function modificarNombre($conexion, $usuario, $nuevoNombre){
-        //     $preparedConexion = $conexion->prepare("UPDATE User SET Nombre = :nuevoNombre WHERE Nombre = :nombre AND contraseña = :contraseña");
-        
-        //     $nombre = $usuario->get_nombre();
-        //     $contraseña = $usuario->get_contraseña();
-        
-        //     $preparedConexion->bindParam(':nombre', $nombre);
-        //     $preparedConexion->bindParam(':contraseña', $contraseña);
-        //     $preparedConexion->bindParam(':nuevoNombre', $nuevoNombre);
-        
-        //     $preparedConexion->execute();
-        // }
-        
-        // public static function modificarcontraseña($conexion, $usuario, $nuevocontraseña){
-        //     $preparedConexion = $conexion->prepare("UPDATE User SET contraseña = :nuevocontraseña WHERE Nombre = :nombre AND contraseña = :contraseña");
-        
-        //     $nombre = $usuario->get_nombre();
-        //     $contraseña = $usuario->get_contraseña();
-        
-        //     $preparedConexion->bindParam(':nombre', $nombre);
-        //     $preparedConexion->bindParam(':contraseña', $contraseña);
-        //     $preparedConexion->bindParam(':nuevocontraseña', $nuevocontraseña);
-        
-        //     $preparedConexion->execute();
-        // }
-        
-        // public static function modificarRol($conexion, $usuario, $nuevoRol){
-        //     $preparedConexion = $conexion->prepare("UPDATE User SET Role = :nuevoRol WHERE Nombre = :nombre AND contraseña = :contraseña");
-        
-        //     $nombre = $usuario->get_nombre();
-        //     $contraseña = $usuario->get_contraseña();
-        
-        //     $preparedConexion->bindParam(':nombre', $nombre);
-        //     $preparedConexion->bindParam(':contraseña', $contraseña);
-        //     $preparedConexion->bindParam(':nuevoRol', $nuevoRol);
-        
-        //     $preparedConexion->execute();
-        // }
-        
-        
-        
     }
 ?>

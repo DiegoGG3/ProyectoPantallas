@@ -1,9 +1,8 @@
 <?php
 
 
-$db = new DB();
-$db->abreConexion();
-$conexion = $db->getConexion();
+$conexion = DB::abreConexion();
+
 ?>
 
 <!DOCTYPE html>

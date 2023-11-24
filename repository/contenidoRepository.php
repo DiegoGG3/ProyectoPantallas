@@ -16,18 +16,22 @@
                 $array->duracion
             ));
         }
-        return $arraycontenido;
+        return $arrayContenido;
     }
     
     public static function añadirContenido($conexion, $contenido) {
         $preparedConexion = $conexion->prepare("INSERT INTO contenido(tipo, url, formato, duracion)
-            VALUES (:tipo, :url, '', '')");
+            VALUES (:tipo, :url, '', :duracion)");
     
         $tipo = $contenido->getTipo();
         $url = $contenido->getUrl();
+        $duracion = $contenido->getDuracion();
+
     
         $preparedConexion->bindParam(':tipo', $tipo);
         $preparedConexion->bindParam(':url', $url);
+        $preparedConexion->bindParam(':duracion', $duracion);
+
     
         $preparedConexion->execute();
     }
@@ -58,15 +62,18 @@
     
         return $idContenido;
     }
-    public static function devolverUrlContenidoPorId($conexion, $idContenido){
-        $sql = "SELECT url FROM contenido WHERE idContenido = :idContenido";
-        $statement = $conexion->prepare($sql);
-        $statement->bindParam(":idContenido", $idContenido);
-        $statement->execute();
-    
-        $url = $statement->fetch(PDO::FETCH_COLUMN);
-    
-        return $url;
+    public static function devolverContenidoPorId($conexion, $idContenido){
+        $resultado = $conexion->query('SELECT * FROM contenido WHERE idContenido =' . $idContenido . ";", MYSQLI_USE_RESULT);
+            $registro = $resultado->fetch(PDO::FETCH_OBJ);
+            $objeto=contenidoRepository::crearContenido(
+                $registro->idContenido,
+                $registro->tipo,
+                $registro->url,
+                $registro->formato,
+                $registro->duracion
+            );
+            return $objeto;
+            
     }
     
  

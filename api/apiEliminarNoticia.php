@@ -4,8 +4,7 @@
     $datos=file_get_contents('php://input');
     $prueba= json_decode($datos, true);
 
-    $db = new DB();
-    $db->abreConexion();
-    $conexion = $db->getConexion();
+    $conexion = DB::abreConexion();
+
     noticiaRepository::borrarNoticia($conexion,$prueba['idNoticia']);
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-class Contenido {
+class contenido {
     public $idContenido;
     public $tipo;
     public $url;

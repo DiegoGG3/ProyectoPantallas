@@ -58,6 +58,16 @@
     
         return $idContenido;
     }
+    public static function devolverUrlContenidoPorId($conexion, $idContenido){
+        $sql = "SELECT url FROM contenido WHERE idContenido = :idContenido";
+        $statement = $conexion->prepare($sql);
+        $statement->bindParam(":idContenido", $idContenido);
+        $statement->execute();
+    
+        $url = $statement->fetch(PDO::FETCH_COLUMN);
+    
+        return $url;
+    }
     
  
 }

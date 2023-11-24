@@ -10,7 +10,7 @@
         $database=$_SERVER['DOCUMENT_ROOT']."/ProyectoPantallas/database/".$clase.'.php';
         $interfaz=$_SERVER['DOCUMENT_ROOT']."/ProyectoPantallas/interfaz/".$clase.'.php';
         $css=$_SERVER['DOCUMENT_ROOT']."/ProyectoPantallas/css/".$clase.'.php';
-        $principal=$_SERVER['DOCUMENT_ROOT']."/ProyectoPantallas/Principal/".$clase.'.php';
+        $principal=$_SERVER['DOCUMENT_ROOT']."/ProyectoPantallas/principal/".$clase.'.php';
 
 
 
